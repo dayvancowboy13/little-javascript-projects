@@ -1,0 +1,2 @@
+shopping-list.html is adapted from MDN's exercise for learning the DOM and JS functions.
+The source code is here: https://github.com/mdn/learning-area/blob/main/javascript/apis/document-manipulation/shopping-list.html

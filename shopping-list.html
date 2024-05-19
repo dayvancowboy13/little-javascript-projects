@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 12px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button>Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+        const ulRef = document.querySelector('ul');
+        const inputRef = document.querySelector('input');
+        const buttonRef = document.querySelector('button');
+        const deleteAllButton = document.createElement('button');
+        deleteAllButton.textContent = "delete all";
+        //document.body.appendChild(deleteAllButton);
+
+        deleteAllButton.addEventListener('click', () => {
+            const listItems = document.querySelectorAll('li');
+
+            for (const item of listItems) {
+                item.remove();
+            }
+
+            deleteAllButton.remove();
+        });
+
+        buttonRef.addEventListener('click', () =>{
+            const inputValue = inputRef.value;
+            inputRef.value = '';
+
+            if(ulRef.childElementCount == 0) {
+                document.body.appendChild(deleteAllButton);
+            }
+            
+            const listRef = document.createElement('li');
+            const spanRef = document.createElement('span');
+            const deleteButton = document.createElement('button')
+
+            listRef.appendChild(spanRef);
+            listRef.appendChild(deleteButton);
+
+            spanRef.textContent = inputValue;
+            deleteButton.textContent = "delete";
+
+            ulRef.appendChild(listRef);
+
+            deleteButton.addEventListener('click',() =>{
+                listRef.remove();
+            });
+
+            inputRef.focus();
+
+        });
+        
+
+    </script>
+  </body>
+</html>
